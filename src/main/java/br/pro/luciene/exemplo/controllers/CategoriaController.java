@@ -26,34 +26,34 @@ private final CategoriaService CategoriaService;
         List<CategoriaEntity> lista = CategoriaService.listarTodos();
         return ResponseEntity.ok().body(lista);
     }
-}
-//     @PostMapping
-//     public ResponseEntity<CategoriaEntity> incluir(@RequestBody 
-//     CategoriaEntity Categoria) {
-//         CategoriaEntity novo = CategoriaService.incluir(Categoria);
-//         if (novo != null) {
-//             return new ResponseEntity<>(novo, HttpStatus.CREATED);
-//         } else {
-//             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//         }
-//     }
 
-//      @PutMapping("/{id}")
-//     public ResponseEntity<CategoriaEntity> editar(@PathVariable int id, 
-//     @RequestBody CategoriaEntity Categoria) {
-//         CategoriaEntity atualizado = CategoriaService.editar(id,Categoria);
-//         if (atualizado != null) {
-//             return new ResponseEntity<>(atualizado, HttpStatus.OK);
-//         } else {
-//             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//         }
-//     }
+    @PostMapping
+    public ResponseEntity<CategoriaEntity> incluir(@RequestBody 
+    CategoriaEntity categoria) {
+        CategoriaEntity novo = CategoriaService.incluir(categoria);
+        if (novo != null) {
+            return new ResponseEntity<>(novo, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+     @PutMapping("/{id}") //editar
+    public ResponseEntity<CategoriaEntity> editar(@PathVariable int id, 
+    @RequestBody CategoriaEntity Categoria) {
+        CategoriaEntity atualizado = CategoriaService.editar(id,Categoria);
+        if (atualizado != null) {
+            return new ResponseEntity<>(atualizado, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     
-//     @DeleteMapping("/{id}")
-//     public ResponseEntity<Void> excluir(@PathVariable int id) {
-//         CategoriaService.excluir(id);
-//         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//     }
-// }
-// }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable int id) {
+        CategoriaService.excluir(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+}
+
