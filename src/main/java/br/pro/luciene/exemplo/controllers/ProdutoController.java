@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import br.pro.luciene.exemplo.entities.ProdutoEntity;
 import br.pro.luciene.exemplo.services.ProdutoService;
-import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
 @RequestMapping(value = "/produto")
@@ -26,34 +25,34 @@ private final ProdutoService ProdutoService;
         List<ProdutoEntity> lista = ProdutoService.listarTodos();
         return ResponseEntity.ok().body(lista);
     }
-}
-//     @PostMapping
-//     public ResponseEntity<ProdutoEntity> incluir(@RequestBody 
-//     ProdutoEntity Produto) {
-//         ProdutoEntity novo = ProdutoService.incluir(Produto);
-//         if (novo != null) {
-//             return new ResponseEntity<>(novo, HttpStatus.CREATED);
-//         } else {
-//             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//         }
-//     }
 
-//      @PutMapping("/{id}")
-//     public ResponseEntity<ProdutoEntity> editar(@PathVariable int id, 
-//     @RequestBody ProdutoEntity Produto) {
-//         ProdutoEntity atualizado = ProdutoService.editar(id,Produto);
-//         if (atualizado != null) {
-//             return new ResponseEntity<>(atualizado, HttpStatus.OK);
-//         } else {
-//             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//         }
-//     }
+     @PostMapping
+     public ResponseEntity<ProdutoEntity> incluir(@RequestBody 
+     ProdutoEntity Produto) {
+         ProdutoEntity novo = ProdutoService.incluir(Produto);
+         if (novo != null) {
+             return new ResponseEntity<>(novo, HttpStatus.CREATED);
+         } else {
+             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+         }
+     }
+
+      @PutMapping("/{id}")
+     public ResponseEntity<ProdutoEntity> editar(@PathVariable int id, 
+     @RequestBody ProdutoEntity Produto) {
+         ProdutoEntity atualizado = ProdutoService.editar(id,Produto);
+         if (atualizado != null) {
+             return new ResponseEntity<>(atualizado, HttpStatus.OK);
+         } else {
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+     }
 
     
-//     @DeleteMapping("/{id}")
-//     public ResponseEntity<Void> excluir(@PathVariable int id) {
-//         ProdutoService.excluir(id);
-//         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//     }
-// }
-// }
+     @DeleteMapping("/{id}")
+     public ResponseEntity<Void> excluir(@PathVariable int id) {
+         ProdutoService.excluir(id);
+         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+     }
+ }
+ 

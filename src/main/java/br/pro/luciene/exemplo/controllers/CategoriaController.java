@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import br.pro.luciene.exemplo.entities.CategoriaEntity;
 import br.pro.luciene.exemplo.services.CategoriaService;
-import lombok.RequiredArgsConstructor;
 @RestController
-@RequiredArgsConstructor //colocando isso não precisa colocar @Autowired no atributo
+@RequiredArgsConstructor
 @RequestMapping(value = "/categoria")
 public class CategoriaController {
 private final CategoriaService CategoriaService;
@@ -29,8 +28,8 @@ private final CategoriaService CategoriaService;
 
     @PostMapping
     public ResponseEntity<CategoriaEntity> incluir(@RequestBody 
-    CategoriaEntity categoria) {
-        CategoriaEntity novo = CategoriaService.incluir(categoria);
+    CategoriaEntity Categoria) {
+        CategoriaEntity novo = CategoriaService.incluir(Categoria);
         if (novo != null) {
             return new ResponseEntity<>(novo, HttpStatus.CREATED);
         } else {
@@ -38,7 +37,7 @@ private final CategoriaService CategoriaService;
         }
     }
 
-     @PutMapping("/{id}") //editar
+    @PutMapping("/{id}")
     public ResponseEntity<CategoriaEntity> editar(@PathVariable int id, 
     @RequestBody CategoriaEntity Categoria) {
         CategoriaEntity atualizado = CategoriaService.editar(id,Categoria);
